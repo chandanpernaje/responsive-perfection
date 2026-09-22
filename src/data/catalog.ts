@@ -1,4 +1,21 @@
+export type CatalogProduct = {
+  id: string;
+  category: string;
+  brand: string;
+  partNo: string;
+  name: string;
+  specs: string[];
+  voltage: string;
+  tempRange: string;
+  conductor: string;
+  price: number;
+  unit: string;
+  stock: string;
+  icon: string;
+  application: string;
+};
 
+export const PRODUCTS: CatalogProduct[] = [
   {
     id: 'lapp-01',
     category: 'cables',
@@ -223,3 +240,4 @@
     icon: 'ethernet',
     application: 'Panel Builders, Switchgear Manufacturers, On-Site Industrial Marking'
   }
+];
