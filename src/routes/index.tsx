@@ -111,7 +111,8 @@ function Index() {
     return () => window.clearInterval(id);
   }, []);
 
-  const brand = brands.find((item) => item.id === activeBrand) ?? brands[0];
+  const brand = brands.find((item) => item.id === activeBrand) as Brand;
+  const currentSlide = slides[slide] as (typeof slides)[number];
   const filtered = useMemo(() => {
     const term = query.trim().toLowerCase();
     if (!term) return brand.products;
@@ -173,13 +174,13 @@ function Index() {
       <section className="hero-section" aria-label="Current offers">
         <div className="site-shell">
           <div className="hero-card">
-            <img src={slides[slide].image} alt="" className="hero-bg" />
+            <img src={currentSlide.image} alt="" className="hero-bg" />
             <div className="hero-shade" />
             <div className="hero-copy">
-              <img src={slides[slide].brand} alt="" className="hero-brand" />
-              <p className="eyebrow">{slides[slide].eyebrow}</p>
-              <h1>{slides[slide].title}</h1>
-              <p className="hero-text">{slides[slide].text}</p>
+              <img src={currentSlide.brand} alt="" className="hero-brand" />
+              <p className="eyebrow">{currentSlide.eyebrow}</p>
+              <h1>{currentSlide.title}</h1>
+              <p className="hero-text">{currentSlide.text}</p>
               <ActionButton onClick={() => goTo("rfq")}>Claim offer <ArrowRight /></ActionButton>
             </div>
             <div className="slider-controls">
